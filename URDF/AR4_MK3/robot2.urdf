@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="robot_arm_urdf">
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/base_link.STL" />
+      </geometry>
+      <material name="gray">
+        <color rgba="0.5 0.5 0.5 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/base_link.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1.0" />
+      <inertia 
+        ixx="0.01" 
+        ixy="0" 
+        ixz="0" 
+        iyy="0.01" 
+        iyz="0" 
+        izz="0.01" />
+    </inertial>
+  </link>
+
+  <!-- Joint 1 -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.0" rpy="3.14159 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="50" velocity="1.0"/>
+  </joint>
+
+  <!-- Link 1 -->
+  <link name="link_1">
+    <visual>
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/link_1.STL" />
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/link_1.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.25" rpy="0 0 0" />
+      <mass value="2.0"/>
+      <inertia 
+        ixx="0.01" 
+        ixy="0" 
+        ixz="0" 
+        iyy="0.01" 
+        iyz="0" 
+        izz="0.01" />
+    </inertial>
+  </link>
+
+  <!-- Joint 2 -->
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <!-- Position link_2 on top of link_1 -->
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.57" upper="1.57" effort="40" velocity="1.0"/>
+  </joint>
+
+  <!-- Link 2 -->
+  <link name="link_2">
+    <visual>
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/link_2.STL" />
+      </geometry>
+      <material name="green">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:/Users/MSI/python code/AR4_MK3/link_2.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0.25" rpy="0 0 0" />
+      <mass value="1.5"/>
+      <inertia 
+        ixx="0.01" 
+        ixy="0" 
+        ixz="0" 
+        iyy="0.01" 
+        iyz="0" 
+        izz="0.01" />
+    </inertial>
+  </link>
+</robot>
